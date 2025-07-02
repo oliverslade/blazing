@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Log in</title>
+  <link rel="stylesheet" href="/static/tachyons.min.css">
+</head>
+<body class="pa4 sans-serif">
+  <main class="mw6 center">
+    <form class="pa4 ba br3 b--black-10" action="/login" method="POST">
+      <h1 class="f3 tc ma0 mb3">Log in</h1>
+
+      <label class="db mv2 f6">Username
+        <input name="user" class="input-reset ba b--black-20 pa2 w-100" required>
+      </label>
+      <label class="db mv2 f6">Password
+        <input type="password" name="pw" class="input-reset ba b--black-20 pa2 w-100" required>
+      </label>
+
+      <input type="hidden" name="csrf" value="{{.Csrf}}">
+      <button class="w-100 bg-blue white bn br2 pa3 dim pointer">Log in</button>
+    </form>
+
+    <p class="tc f6 mv3">
+      No account? <a class="link blue dim" href="/signup">Create one</a>
+    </p>
+  </main>
+</body>
+</html>

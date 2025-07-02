@@ -1,0 +1,12 @@
+# Ignore environment files
+.env
+.env.*
+
+# Ignore certificate and key files
+*.pem
+
+# Other common Go ignores
+/bin/
+*.exe
+*.test
+coverage.out
