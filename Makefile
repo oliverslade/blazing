@@ -2,11 +2,11 @@
 
 run:
 	@echo "Starting server..."
-	go run cmd/blazing/main.go
+	go run cmd/server/main.go
 
 build:
 	@echo "Building binary..."
-	go build -o bin/blazing cmd/blazing/main.go
+	go build -o bin/blazing cmd/server/main.go
 
 clean:
 	@echo "Cleaning build artifacts..."
