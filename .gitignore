@@ -1,12 +1,29 @@
-# Ignore environment files
+# Build artifacts
+bin/
+blazing
+main
+
+# Environment variables (contains secrets)
 .env
 .env.*
 
-# Ignore certificate and key files
-*.pem
+# Database files
+*.db
+*.db-shm
+*.db-wal
 
-# Other common Go ignores
-/bin/
-*.exe
-*.test
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test coverage
 coverage.out

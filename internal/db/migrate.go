@@ -2,11 +2,10 @@ package db
 
 import (
 	"database/sql"
+	"embed"
 	"fmt"
 	"io/fs"
 	"log"
-	"os"
-	"path/filepath"
 	"sort"
 	"strings"
 )
@@ -76,8 +75,11 @@ func getAppliedMigrations(db *sql.DB) (map[string]bool, error) {
 	return applied, rows.Err()
 }
 
+//go:embed migrations/*.sql
+var migrationsFS embed.FS
+
 func getMigrationFiles() ([]string, error) {
-	entries, err := fs.ReadDir(os.DirFS("."), "migrations")
+	entries, err := fs.ReadDir(migrationsFS, "migrations")
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +98,7 @@ func getMigrationFiles() ([]string, error) {
 }
 
 func runMigration(db *sql.DB, filename string) error {
-	migrationSQL, err := fs.ReadFile(os.DirFS("."), filepath.Join("migrations", filename))
+	migrationSQL, err := fs.ReadFile(migrationsFS, "migrations/"+filename)
 	if err != nil {
 		return fmt.Errorf("failed to read migration file: %w", err)
 	}
